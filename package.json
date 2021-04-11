@@ -10,7 +10,7 @@
     "start": "./bin/speedcheck.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "apeiron242",
   "license": "ISC",
   "dependencies": {
     "@types/cli-color": "^2.0.0",
