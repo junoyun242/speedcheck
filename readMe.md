@@ -4,10 +4,11 @@ This app scrapes the results from [speedtest.net](ttps://www.speedtest.net)
 
 ## Installation
 
-1. You need to install Nodejs to run this app
+1. You need to install Nodejs and typescript to run this app
 2. Clone This Repository
 3. `npm install`
-4. `npm link`
+4. `tsc`
+5. `npm link`
 
 ## Usage
 
@@ -21,4 +22,4 @@ This app scrapes the results from [speedtest.net](ttps://www.speedtest.net)
 
 ## Example
 
-<img src="example.PNG">
+[Image](../blob/master/example.PNG?raw=true)
