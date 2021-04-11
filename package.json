@@ -2,13 +2,13 @@
   "name": "speedcheck",
   "version": "1.0.0",
   "description": "",
-  "main": "bin/speedcheck.js",
+  "main": "app/speedcheck.js",
   "bin": {
-    "speedcheck": "./bin/speedcheck.js"
+    "speedcheck": "./app/speedcheck.js"
   },
   "scripts": {
     "preinstall": "tsc",
-    "start": "./bin/speedcheck.js"
+    "start": "./app/speedcheck.js"
   },
   "keywords": [],
   "author": "apeiron242",
