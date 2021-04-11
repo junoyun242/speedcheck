@@ -17,7 +17,7 @@ class Result {
   }
 
   format() {
-    console.log(clc.blueBright(template(this.getText)));
+    console.log(clc.blueBright.underline(template(this.getText)));
   }
 }
 

@@ -5,6 +5,7 @@ import Result from "./result";
 import clc from "cli-color";
 
 let browserMode = true;
+let count = 0;
 
 if (process.argv[2] === "browser") {
   browserMode = false;
@@ -18,42 +19,50 @@ if (process.argv[2] === "browser") {
   );
 }
 
-console.log(clc.red("If error occurs, please try it again\n"));
-
 console.log(clc.greenBright("Tesing..."));
 
-(async () => {
+const scrape = async () => {
   const browser = await puppeteer.launch({
     headless: browserMode,
   });
-  const page = await browser.newPage();
-  await page.goto("https://www.speedtest.net");
+  try {
+    const page = await browser.newPage();
+    await page.goto("https://www.speedtest.net");
+    await page.waitForSelector(".start-text");
+    await page.click(".start-text");
+    await page.click(".start-ring");
 
-  await page.waitForSelector(".start-text");
-  await page.click(".start-text");
-  await page.click(".start-ring");
+    await page.waitForTimeout(40000);
 
-  await page.waitForTimeout(30000);
+    console.log(clc.greenBright("\nTesing..."));
 
-  console.log(clc.greenBright("\nTesing..."));
+    await page.waitForSelector(".audience-survey-answers");
 
-  await page.waitForSelector(".audience-survey-answers");
+    const getText = await page.evaluate(() => {
+      const ping = document.querySelector(".ping-speed")?.innerHTML;
+      const download = document.querySelector(".download-speed")?.innerHTML;
+      const upload = document.querySelector(".upload-speed")?.innerHTML;
 
-  const getText = await page.evaluate(() => {
-    const ping = document.querySelector(".ping-speed")?.innerHTML;
-    const download = document.querySelector(".download-speed")?.innerHTML;
-    const upload = document.querySelector(".upload-speed")?.innerHTML;
+      return {
+        ping,
+        download,
+        upload,
+      };
+    });
+    const result = new Result(getText);
 
-    return {
-      ping,
-      download,
-      upload,
-    };
-  });
+    result.format();
+    await browser.close();
+  } catch (error) {
+    if (count < 2) {
+      count++;
+      console.log(clc.red("Error has occured. Trying it again"));
+      scrape();
+    } else {
+      console.log(clc.red("Error has occured. Try it next time"));
+      await browser.close();
+    }
+  }
+};
 
-  const result = new Result(getText);
-
-  result.format();
-
-  await browser.close();
-})();
+scrape();
