@@ -21,4 +21,4 @@ This app scrapes the results from [speedtest.net](ttps://www.speedtest.net)
 
 ## Example
 
-[Image](../example.PNG?raw=true)
+<img width="497" alt="example" src="https://user-images.githubusercontent.com/70903848/114297264-99e6da00-9aea-11eb-90d4-f281aacf7248.png">
