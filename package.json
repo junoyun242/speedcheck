@@ -7,7 +7,7 @@
     "speedcheck": "./app/speedcheck.js"
   },
   "scripts": {
-    "preinstall": "tsc",
+    "postinstall": "tsc",
     "start": "./app/speedcheck.js"
   },
   "keywords": [],
