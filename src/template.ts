@@ -1,6 +1,5 @@
 const template = (getText: any) => {
-  const text = `  
-Speed of your Internet
+  const text = `\nSpeed of your Internet
 
 Ping: ${getText.ping}
 

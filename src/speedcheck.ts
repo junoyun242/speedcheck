@@ -63,6 +63,7 @@ const scrape = async () => {
       await browser.close();
     }
   }
+  await browser.close();
 };
 
 scrape();
