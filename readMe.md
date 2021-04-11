@@ -1,6 +1,6 @@
 # SpeedCheck: Check Your Network Speed by Cli
 
-This app scrapes the results from [speedtest.net](ttps://www.speedtest.net)
+This app scrapes the results from [speedtest.net](https://www.speedtest.net)
 
 ## Installation
 
